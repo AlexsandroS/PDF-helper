@@ -251,6 +251,7 @@ body{
     justify-self: baseline;
     color: var(--main-color);
     transition: .2s;
+    outline: none;
 }
 
 .btn-gerar:hover:enabled{
