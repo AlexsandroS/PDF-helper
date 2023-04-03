@@ -1,5 +1,5 @@
 const { jsPDF } = window.jspdf;
-
+const pdflib = window.PDFLib
 
 //--------------
 
@@ -21,6 +21,7 @@ const showPreviewName = document.getElementsByClassName('textarea')[2]
 const _imagens = []
 var pdfData;
 
+var debug;
 
 const Tools = {
     toBase64: function(imgSrc)
@@ -60,9 +61,7 @@ const Tools = {
     toPDF: function()
     {
         const doc = new jsPDF();
-
         _imagens.forEach((image, i) => {
-
             const pageWidth = doc.internal.pageSize.getWidth()
             const pageHeight = doc.internal.pageSize.getHeight()
 
@@ -80,7 +79,6 @@ const Tools = {
             
             if(i !== _imagens.length - 1)
                 doc.addPage();
-              
             })
 
             const fileName = archiveName.value;
@@ -95,23 +93,23 @@ const Tools = {
             var filePDF = inputPDF.files[0];
 
             if(filePDF !== undefined)
-             btnOpt.toggleAttribute('disabled', false)
-
+            // btnOpt.toggleAttribute('disabled', false)
 
              showFilename.innerText = filePDF.name;
              showFileSize.innerText = this.fmtSize(filePDF.size)
              showGroup.toggleAttribute('hidden', false)
             
              drag_drop_pdf.classList.toggle('drag-drop-min', true)
-
             var fileReader = new FileReader();
-            fileReader.readAsArrayBuffer(filePDF);
+            
             fileReader.onload = function() {  
                 pdfData  = new Uint8Array(this.result);
+                
             }
+            fileReader.readAsArrayBuffer(filePDF);
         },
         optimzePDF: function(){
-
+            
           
         },
         fmtSize: function(size)
