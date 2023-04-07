@@ -75,7 +75,7 @@ const Tools = {
             const marginX = (pageWidth - canvasWidth) / 2;
             const marginY = (pageHeight - canvasHeight) / 2;
 
-            doc.addImage(image.base64, "JPEG", marginX, marginY, canvasWidth, canvasHeight);
+            doc.addImage(image.base64, "JPEG", marginX, marginY, canvasWidth, canvasHeight, image.name,'MEDIUM')
             
             if(i !== _imagens.length - 1)
                 doc.addPage();
