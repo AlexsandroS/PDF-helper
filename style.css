@@ -108,7 +108,6 @@ body{
     z-index: 99;
 }
 
-
 .drag-drop:hover{
     cursor: pointer;
     background: rgb(94, 94, 94);
@@ -116,7 +115,7 @@ body{
 }
 
 .icon-drop{
-    filter:invert(1);
+    filter: invert(1);
     width: 80px;
     height: 80px;
 }
@@ -238,7 +237,6 @@ body{
     background-color: brown;
 }
 
-
 .btn-gerar{
     height: 60px;
     width: 100%;
@@ -287,6 +285,7 @@ body{
     width: 100%;
     z-index: 99;
 }
+
 .extra-tool > span{
     margin-top: 5px;
 }
@@ -326,9 +325,8 @@ body{
 }
 
 .pdf-creator-zone-bt > img{
-height: 60px;
-width: 110px;
-
+    height: 60px;
+    width: 110px;
 }
 
 .pdf-creator-zone-bt > .preview{
@@ -340,10 +338,13 @@ width: 110px;
 
 .copy{
     position: absolute;
-    color: rgb(105, 0, 0);
+    background: rgb(105, 0, 0);
+    color: var(--background-color);
     bottom: 0;
     font-family: 'Lato', sans-serif;
     font-style: italic;
     text-shadow: 0 0 15px #880804;
+    border-radius: 0 10px 10px 0;
+    padding: 0 5px 0 5px;
 }
 
