@@ -6,6 +6,7 @@ const pdflib = window.PDFLib
 const drag_drop = document.getElementsByClassName('drag-drop container')[0]
 const drag_drop_pdf = document.getElementsByClassName('drag-drop container')[1]
 const filesViewer = document.getElementById('main-files-content')
+const showFilescount = document.getElementById('files-title')
 const remItems = document.getElementsByClassName('item-remove')
 const inputFiles = document.getElementById('inFiles')
 const btnCreator = document.getElementsByClassName('btn-gerar')[1]
@@ -19,8 +20,7 @@ const showPreviewName = document.getElementsByClassName('textarea')[2]
 //-------------------
 
 const _imagens = []
-var pdfData;
-
+var pdfData, uSize = 0, cSize = 0;
 var debug;
 
 const Tools = {
@@ -50,7 +50,8 @@ const Tools = {
                     type: files[i].type,
                     base64: base64,
                     height: img.height,
-                    width: img.width
+                    width: img.width,
+                    size: files[i].size
                 }
                 Item.createItem(imgObj.name, imgObj.base64)
                 _imagens.push(imgObj)
@@ -75,13 +76,17 @@ const Tools = {
             const marginX = (pageWidth - canvasWidth) / 2;
             const marginY = (pageHeight - canvasHeight) / 2;
 
-            doc.addImage(image.base64, "JPEG", marginX, marginY, canvasWidth, canvasHeight, image.name,'MEDIUM')
-            
+            doc.addImage(image.base64, "JPEG", marginX, marginY, canvasWidth, canvasHeight, image.name, 'MEDIUM')
+            uSize = uSize + image.size;
             if(i !== _imagens.length - 1)
                 doc.addPage();
             })
 
-            const fileName = archiveName.value;
+            cSize = doc.output('arraybuffer') 
+
+            // this.fmtSize(cSize.bytesLength)
+
+            var fileName = archiveName.value;
             if(fileName.length <= 0 || fileName === undefined)
                 fileName = 'arc-imagens'
             else if(fileName.includes('.pdf'))
@@ -116,11 +121,9 @@ const Tools = {
         {
             var inBytes = size / 1024;
             const result = []; // 0 = value, 1 = unity
-  
             inBytes = (inBytes.toFixed(2) / 1024).toString()
             result[0] = inBytes.substring(0, inBytes.indexOf('.') + 3);
             result[1] = ' MB'
- 
             return result[0] + result[1]
         }
 }
@@ -128,12 +131,12 @@ const Tools = {
 
 const Item = {
     createItem: function (name,image64) {
-        var obj = `<div class="item">
+        var template = `<div class="item">
                         <img class="item-preview" src='${image64}'>
-                        <span class="item-name">${name}</span>
+                        <span class="item-name" title='${name}'>${name}</span>
                         <div class="item-remove material-symbols-outlined"></div>
                     </div>`
-        filesViewer.children[1].innerHTML += obj
+        filesViewer.children[1].innerHTML += template
     },
     removeItem: function (e) {
         const toArray = [].slice.call(remItems)
@@ -141,12 +144,15 @@ const Item = {
         _imagens.splice(aidi, 1)
         e.srcElement.parentElement.remove()
         this.toggleShowItens()
+        showFilescount.innerText = remItems.length > 1 ? remItems.length + ' arquivos selecionados' : remItems.length + ' arquivo selecionado'
     },
     updateItens: function () {
         for (let i = 0; i < remItems.length; i++) {
             remItems[i].addEventListener('click', (e) => {
                 Item.removeItem(e)
             })}
+
+        showFilescount.innerText = remItems.length > 1 ? remItems.length + ' arquivos selecionados' : remItems.length + ' arquivo selecionado'
     },
     toggleShowItens: function()
     {

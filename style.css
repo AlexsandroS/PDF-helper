@@ -13,6 +13,7 @@
     box-sizing: border-box;
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
+    outline: none;
 }
 
 *::-webkit-scrollbar {
@@ -175,7 +176,7 @@ body{
     overflow: overlay;
 }
 
-.files-title{
+#files-title{
     height: 25px;
     border: 1px solid rgb(69, 69, 69);
     width: 100%;
@@ -204,6 +205,7 @@ body{
     font-size: 14px;
     padding: 5px 10px 0 10px;
     color:black;
+    cursor: help;
 }
 
 .item-preview{
@@ -228,6 +230,7 @@ body{
 
 .item-remove::before{
    content: 'delete';
+   cursor: pointer;
 }
 
 .item-remove:hover{
@@ -249,7 +252,7 @@ body{
     justify-self: baseline;
     color: var(--main-color);
     transition: .2s;
-    outline: none;
+
 }
 
 .btn-gerar:hover:enabled{
