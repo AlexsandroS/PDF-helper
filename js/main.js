@@ -61,6 +61,7 @@ const Tools = {
     },
     toPDF: function()
     {
+        btnCreator.innerText = "Criando..."
         const doc = new jsPDF();
         _imagens.forEach((image, i) => {
             const pageWidth = doc.internal.pageSize.getWidth()
@@ -76,7 +77,7 @@ const Tools = {
             const marginX = (pageWidth - canvasWidth) / 2;
             const marginY = (pageHeight - canvasHeight) / 2;
 
-            doc.addImage(image.base64, "JPEG", marginX, marginY, canvasWidth, canvasHeight, image.name, 'MEDIUM')
+            doc.addImage(image.base64, "JPEG", marginX, marginY, canvasWidth, canvasHeight, image.name, 'FAST')
             uSize = uSize + image.size;
             if(i !== _imagens.length - 1)
                 doc.addPage();
@@ -92,6 +93,8 @@ const Tools = {
             else if(fileName.includes('.pdf'))
                 fileName.replace('.pdf','') 
             doc.save(fileName + '.pdf');
+
+            btnCreator.innerText = 'Feito'
         },
         receivePDF: function(){
 
