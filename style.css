@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 :root{
     --background-color: rgb(15, 15, 15);
-    --main-color: #cc0000;
-    --main-color-shadow: #880804;
+    --main-color: #0959ed;
+    --main-color-shadow: #002c7e;
     --text-color: rgb(233, 233, 233);
 }
 
@@ -85,7 +85,7 @@ body{
     border: 3px solid white;
     border-radius: 20px;
     padding: 10px; 
-    box-shadow:  0 0 0 1px rgba(77, 77, 77, 0.164), 0 0 2px 2px rgba(77, 77, 77, 0.153),0 0 4px 4px rgba(77, 77, 77, 0.198), 0 0 10px 8px rgba(77, 77, 77, 0.123);;
+    box-shadow:  0 0 0 1px rgba(77, 77, 77, 0.164), 0 0 2px 2px rgba(77, 77, 77, 0.153),0 0 4px 4px rgba(77, 77, 77, 0.198), 0 0 10px 8px rgba(77, 77, 77, 0.123);
 }
 
 .drag-drop-min{
@@ -341,13 +341,13 @@ body{
 
 .copy{
     position: absolute;
-    background: rgb(105, 0, 0);
+    background: var(--main-color);
     color: var(--background-color);
     bottom: 0;
+    font-weight: bold;
     font-family: 'Lato', sans-serif;
-    font-style: italic;
-    text-shadow: 0 0 15px #880804;
     border-radius: 0 10px 10px 0;
     padding: 0 5px 0 5px;
+    letter-spacing: 2px;
 }
 
