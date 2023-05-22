@@ -21,14 +21,14 @@ const filesViewer = document.getElementById('main-files-content')
 const showFilescount = document.getElementById('files-title')
 const remItems = document.getElementsByClassName('item-remove')
 const inputFiles = document.getElementById('inFiles')
-const btnCreator = document.getElementsByClassName('btn-gerar')[1]
+const btnCreator = document.getElementsByClassName('btn-gerar')[0]
 const archiveName = document.getElementById('archiveName')
-const btnOpt = document.getElementsByClassName('btn-gerar')[0]
+const btnOpt = document.getElementsByClassName('btn-gerar')[1]
 const inputPDF = document.getElementById('inPDFopt')
 const showGroup = document.getElementById('details')
-const showFilename = document.getElementsByClassName('textarea')[0]
-const showFileSize = document.getElementsByClassName('textarea')[1]
-const showPreviewName = document.getElementsByClassName('textarea')[2]
+const showFilename = document.getElementsByClassName('textarea')[1]
+const showFileSize = document.getElementsByClassName('textarea')[2]
+const showPreviewName = document.getElementsByClassName('textarea')[0]
 //-------------------
 
 const _imagens = []
@@ -270,6 +270,6 @@ btnCreator.addEventListener('click', async () => {
 inputPDF.addEventListener('change', () => {
     Tools.receivePDF()
 })
-archiveName.addEventListener('keyup', () => {
+archiveName.addEventListener('keydown', () => {
     showPreviewName.innerText = archiveName.value.length > 0 ? archiveName.value + '.pdf' : 'group-imgs.pdf'
 })

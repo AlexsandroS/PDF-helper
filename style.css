@@ -14,10 +14,11 @@
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
     outline: none;
+   
 }
 
 *::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
   
 *::-webkit-scrollbar-track {
@@ -26,6 +27,7 @@
   
 *::-webkit-scrollbar-thumb {
     background-color: var(--main-color);
+    border-radius: 15px;
 }
 
 body{
@@ -151,7 +153,7 @@ body{
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 97%;
+    width: 98%;
     margin-top: 5px;
     height: 100%;
 }
@@ -169,8 +171,8 @@ body{
     max-height: 70vh;
     min-height: 420px;
     padding: 12px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 180px);
+    display: flex;
+    flex-wrap: wrap;
     column-gap: 10px;
     row-gap: 10px;
     border-top: none;
@@ -350,4 +352,85 @@ body{
     border-radius: 0 10px 10px 0;
     padding: 0 5px 0 5px;
     letter-spacing: 2px;
+}
+
+
+/* mobile */
+
+@media screen and (max-width:768px) { 
+
+    *::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .main{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .header{
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .extra-tool > .header > h1{
+        margin-top: 5px;
+    }
+
+    .pdf-creator-zone-bt{
+        border-top: none;
+        border-bottom: 3px solid var(--main-color);
+    }
+
+    .extra-tool{
+        max-width: 100%;
+    }
+
+    .header > h1{
+        font-size: 52px;
+        width: 50%;
+    }
+    .copy{
+        position: relative;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    .drag-drop{
+        margin: 17px;
+        height: 100px;
+    }
+
+    .icon-drop{
+        height: 60px;
+        width: 60px;
+    }
+
+    .header > h4{
+        left: 136px;
+    }
+
+    .files-group{
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: none;
+        column-gap: 11px;
+    }
+
+    .item{
+        width: 48%;
+        height: 180px;
+    }
+
+    .item-preview{
+        width: 140px;
+        height: 125px;
+    }
+
+    .pdf-creator-zone-bt > .preview
+    {
+        justify-content: center;
+    }
 }
