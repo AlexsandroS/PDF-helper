@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="icon" type="image/x-icon" href="/img/fav-icon.ico">
     <title>PDF Helper</title>
 </head>
 <body>
@@ -30,8 +31,13 @@
         </div>
         <div class="pdf-creator-zone-bt">
             <div class="group-itens container">
-                <span>Nome do PDF a ser criado</span>
-                <input id="archiveName" placeholder="Digite o nome do arquivo">
+                <span>Configurações</span>
+                <div class="orientation-group">Formato da pagina
+                        <div class="orientation portrait"><input type="radio" checked="checked" name="orie" value="p"><div class="radio-indicator" ></div></div> 
+                        
+                        <div class="orientation landscape"><input type="radio" name="orie" value="l"><div class="radio-indicator"></div></div>
+                </div>
+                <input id="archiveName" placeholder="nome do arquivo">
             </div>
             <div class="preview">
             <img src="/img/icon-preview.png">
@@ -60,7 +66,7 @@
             <button class="btn-gerar down-btn" disabled>Comprimir</button>
         </div>
     </div>
-    <div class="copy">© Alexsandro S.</div>
+    <div class="copy">v1.2 ©Alexsandro S.</div>
     <script src="/js/main.js"></script>
 </body>
 </html>

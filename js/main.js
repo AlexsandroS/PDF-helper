@@ -14,7 +14,6 @@ pdfCompress = 'x' | Valores: FAST, MEDIUM, HARD
 
 console.log(msg)
 //--------------
-
 const drag_drop = document.getElementsByClassName('drag-drop container')[0]
 const drag_drop_pdf = document.getElementsByClassName('drag-drop container')[1]
 const filesViewer = document.getElementById('main-files-content')
@@ -29,11 +28,12 @@ const showGroup = document.getElementById('details')
 const showFilename = document.getElementsByClassName('textarea')[1]
 const showFileSize = document.getElementsByClassName('textarea')[2]
 const showPreviewName = document.getElementsByClassName('textarea')[0]
+const rdBtn = document.getElementsByName('orie')
 //-------------------
 
 const _imagens = []
 var pdfData, uSize = 0,
-    cSize = 0, imgCompress = 0.5, pdfCompress = 'FAST';
+    cSize = 0, imgCompress = 0.5, pdfCompress = 'FAST', pdfOrientation = 'p';
 var debug;
 
 const Tools = {
@@ -83,6 +83,7 @@ const Tools = {
             return;
 
         Item.toggleShowItens();
+        archiveName.focus()
         processFiles(files, 0); // recursivo
 
         function processFiles(files, index) {
@@ -136,7 +137,9 @@ const Tools = {
     toPDF: async function () {
         btnCreator.innerText = "Criando..."
         setTimeout(() => {}, 10)
-        const doc = new jsPDF();
+        const doc = new jsPDF({orientation: pdfOrientation});
+        doc.setProperties({author: 'pdfCreator', creator: 'github/AlexsandroS'})
+
         for (let i = 0; i < _imagens.length; i++) {
             const image = _imagens[i]
 
@@ -267,9 +270,19 @@ btnCreator.addEventListener('click', async () => {
         Tools.toPDF()
     }, 10)
 })
+
+rdBtn.forEach( (eRbtn) => {
+    eRbtn.addEventListener('change', () => {
+        console.log(eRbtn.value)
+        pdfOrientation = eRbtn.value != undefined ? eRbtn.value : 'p'
+    })
+})
+
+
 inputPDF.addEventListener('change', () => {
     Tools.receivePDF()
 })
-archiveName.addEventListener('keydown', () => {
+
+archiveName.addEventListener('input', (e) => {
     showPreviewName.innerText = archiveName.value.length > 0 ? archiveName.value + '.pdf' : 'group-imgs.pdf'
 })
