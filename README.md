@@ -4,7 +4,5 @@ PDF-helper é um projeto com uma interface de usuário simples com objetivo real
 
 O projeto é feito em html estático utilizando Javascript, bibliotecas: jsPDF e compressor.
 
-Base de informações: https://github.com/OpenToolKit
-
 Desenvolvido para auxiliar em algumas funções em meu trabalho.
 
